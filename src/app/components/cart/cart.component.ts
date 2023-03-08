@@ -21,8 +21,6 @@ export class CartComponent implements OnInit {
     this.displayedColumns = ['imageUrl','title', 'price', 'totalPrice'];
     this.cartApi.getProductData().subscribe(data => {
       this.dataSource = data
-      // Todo: Not working
-      this.allProducts = this.cartApi.getTotalAmount();
     })
   }
 

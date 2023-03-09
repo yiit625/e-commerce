@@ -23,7 +23,7 @@
 
   <!-- Total Price Column -->
   <ng-container matColumnDef="totalPrice">
-    <th *matHeaderCellDef mat-header-cell>Total Price</th>
+    <th *matHeaderCellDef mat-header-cell>Total Price( $ {{ this.totalPrice}})</th>
     <td *matCellDef="let element" mat-cell>{{ element.total }}</td>
   </ng-container>
 

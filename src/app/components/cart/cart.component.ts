@@ -13,6 +13,7 @@ export class CartComponent implements OnInit {
   displayedColumns: string[] | undefined;
   pageIndex: number = 0;
   pageSize: number = 10;
+  totalPrice: number = 0;
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
 
   constructor(private cartApi: CartapiService) {
@@ -20,7 +21,11 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.displayedColumns = ['imageUrl','title', 'price', 'totalPrice'];
     this.cartApi.getProductData().subscribe(data => {
-      this.dataSource = data
+      this.dataSource = data;
+      data.map((a:any) => {
+        this.totalPrice += a.total;
+        console.log(this.totalPrice);
+      });
     })
   }
 

@@ -33,6 +33,7 @@ export class CartapiService {
         this.cartDataList.splice(index, 1)
       }
     })
+    this.productList.next(this.cartDataList)
   }
 
   removeAllCart() {

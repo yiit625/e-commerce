@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {CartapiService} from "../../services/cartapi.service";
 import {PageEvent} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
@@ -6,7 +6,7 @@ import {MatTableDataSource} from "@angular/material/table";
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
   allProducts: any = 0;
@@ -15,17 +15,21 @@ export class CartComponent implements OnInit {
   pageSize: number = 10;
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
 
-  constructor(private cartApi: CartapiService) {
-  }
+  constructor(private cartApi: CartapiService, private changeDetectorRef: ChangeDetectorRef) {}
   ngOnInit() {
-    this.displayedColumns = ['imageUrl','title', 'price', 'totalPrice'];
+    this.displayedColumns = ['imageUrl','title', 'price', 'totalPrice', 'delete'];
+    this.fetchProducts()
+  }
+
+  fetchProducts() {
     this.cartApi.getProductData().subscribe(data => {
-      this.dataSource = data
+      this.dataSource.data = data
     })
   }
 
   removeProduct(item: any) {
     this.cartApi.removeCartData(item)
+    this.fetchProducts()
   }
 
   removeAllProduct() {

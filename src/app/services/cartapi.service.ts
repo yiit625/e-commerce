@@ -40,6 +40,7 @@ export class CartapiService {
       }
       this.productList.next(this.cartDataList)
     })
+    this.productList.next(this.cartDataList)
   }
 
   removeAllCart() {

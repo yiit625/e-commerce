@@ -1,4 +1,4 @@
-import {ChangeDetectorRef,Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CartapiService} from "../../services/cartapi.service";
 import {PageEvent} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
@@ -6,7 +6,7 @@ import {MatTableDataSource} from "@angular/material/table";
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
   allProducts: any = 0;
@@ -16,8 +16,7 @@ export class CartComponent implements OnInit {
   totalPrice: number = 0;
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
 
-  constructor(private cartApi: CartapiService, private changeDetectorRef: ChangeDetectorRef) {
-  }
+  constructor(private cartApi: CartapiService) {}
   ngOnInit() {
     this.displayedColumns = ['imageUrl','title', 'price', 'totalPrice', 'quantity' ,'delete'];
     this.fetchProducts();
@@ -31,21 +30,25 @@ export class CartComponent implements OnInit {
         this.totalPrice += a.total;
         console.log(this.totalPrice);
       });
-      
+
     })
   }
+
   addProduct(item: any) {
     item.quantity += 1 ;
     item.total = item.quantity * item.price;
     this.cartApi.addToChart(item);
   }
+
   minusProduct(item: any) {
     item.quantity -= 1 ;
     item.total = item.quantity * item.price;
     this.cartApi.addToChart(item);
   }
+
   removeProduct(item: any) {
-    this.cartApi.removeCartData(item);
+    this.cartApi.removeCartData(item)
+    this.fetchProducts()
   }
 
   removeAllProduct() {

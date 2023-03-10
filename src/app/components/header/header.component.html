@@ -2,11 +2,23 @@
   <a mat-button class="companyName" routerLink="/">
     <h2>Cognizant Online Shopping</h2>
   </a>
+
   <span class="example-spacer"></span>
   <div fxShow="true" fxHide.lt-md="true">
-    <a mat-button [routerLink]="'/products'"> Home Page </a>
-    <a mat-button [routerLink]="'/cart'"> Shopping Cart </a>
-    <a mat-button [routerLink]="'/history'"> Order History </a>
+    <a mat-button routerLinkActive="active" [routerLink]="'/products'"> Home Page </a>
+    <a mat-button routerLinkActive="active" [routerLink]="'/cart'"> Shopping Cart </a>
+    <a mat-button routerLinkActive="active" [routerLink]="'/history'"> Order History </a>
+  </div>
+
+  <div class="admin-panel-wrapper">
+    <button class="admin-panel-button" mat-menu-item>
+      <mat-icon style="width: 25px">shopping</mat-icon>
+      <div class="notification_count">
+          <span *ngIf="selectedItemNumber > 0">
+            {{selectedItemNumber}}
+          </span>
+      </div>
+    </button>
   </div>
 
 </mat-toolbar>

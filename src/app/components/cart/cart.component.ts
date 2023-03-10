@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef,Component, OnInit} from '@angular/core';
 import {CartapiService} from "../../services/cartapi.service";
 import {PageEvent} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
@@ -16,21 +16,36 @@ export class CartComponent implements OnInit {
   totalPrice: number = 0;
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
 
-  constructor(private cartApi: CartapiService) {
+  constructor(private cartApi: CartapiService, private changeDetectorRef: ChangeDetectorRef) {
   }
   ngOnInit() {
-    this.displayedColumns = ['imageUrl','title', 'price', 'totalPrice'];
+    this.displayedColumns = ['imageUrl','title', 'price', 'totalPrice', 'quantity' ,'delete'];
+    this.fetchProducts();
+  }
+
+  fetchProducts() {
     this.cartApi.getProductData().subscribe(data => {
-      this.dataSource = data;
+      this.dataSource.data = data;
+      this.totalPrice = 0;
       data.map((a:any) => {
         this.totalPrice += a.total;
         console.log(this.totalPrice);
       });
+      
     })
   }
-
+  addProduct(item: any) {
+    item.quantity += 1 ;
+    item.total = item.quantity * item.price;
+    this.cartApi.addToChart(item);
+  }
+  minusProduct(item: any) {
+    item.quantity -= 1 ;
+    item.total = item.quantity * item.price;
+    this.cartApi.addToChart(item);
+  }
   removeProduct(item: any) {
-    this.cartApi.removeCartData(item)
+    this.cartApi.removeCartData(item);
   }
 
   removeAllProduct() {
@@ -40,5 +55,9 @@ export class CartComponent implements OnInit {
   onChangePage(pe: PageEvent) {
     this.pageSize = pe.pageSize;
     this.pageIndex = pe.pageIndex;
+  }
+
+  buyAll(){
+    this.cartApi.moveToPurchase(this.dataSource);
   }
 }

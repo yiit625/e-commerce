@@ -6,6 +6,7 @@ import {BehaviorSubject} from "rxjs";
 })
 export class CartapiService {
   cartDataList:any = []
+  purchasedList: any = []
   productList = new BehaviorSubject<any>([])
   constructor() { }
 
@@ -14,6 +15,11 @@ export class CartapiService {
   }
 
   addToChart(product:any) {
+    this.cartDataList.map((a:any, index:any) => {
+      if (product.id === a.id) {
+        this.cartDataList.splice(index, 1)
+      }
+    })
     this.cartDataList.push(product)
     this.productList.next(this.cartDataList)
     this.getTotalAmount();
@@ -32,6 +38,7 @@ export class CartapiService {
       if (product.id === a.id) {
         this.cartDataList.splice(index, 1)
       }
+      this.productList.next(this.cartDataList)
     })
   }
 
@@ -39,4 +46,13 @@ export class CartapiService {
     this.cartDataList = []
     this.productList.next(this.cartDataList)
   }
+  moveToPurchase(data:any){
+    this.cartDataList = [];
+    data.filteredData.forEach((a:any, index:any) => {
+      this.purchasedList.push(a);
+    });
+    console.log(this.purchasedList);
+    this.productList.next(this.cartDataList);
+  }
 }
+

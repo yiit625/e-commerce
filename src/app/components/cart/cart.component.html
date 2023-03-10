@@ -1,7 +1,9 @@
-<table
-  mat-table
-  [dataSource]="dataSource"
->
+<mat-card class="cart-list-wrapper">
+  <div class="table-container">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+    >
   <!-- Image Column -->
   <ng-container matColumnDef="imageUrl">
     <th mat-header-cell *matHeaderCellDef>Product Image</th>
@@ -23,8 +25,28 @@
 
   <!-- Total Price Column -->
   <ng-container matColumnDef="totalPrice">
-    <th *matHeaderCellDef mat-header-cell>Total Price( $ {{ this.totalPrice}})</th>
+    <th *matHeaderCellDef mat-header-cell>Total Price ( $ {{ this.totalPrice | number : '1.2-2'}})</th>
     <td *matCellDef="let element" mat-cell>{{ element.total }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="quantity">
+    <th *matHeaderCellDef mat-header-cell>quantity</th>
+    <td *matCellDef="let element" mat-cell>{{ element.quantity }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <th *matHeaderCellDef mat-header-cell>ACTION</th>
+    <td *matCellDef="let element" mat-cell>
+      <button class="button-delete" color="secondary" matTooltip="Remove product">
+        <mat-icon class="btn-primary" (click)="addProduct(element)">add</mat-icon>
+      </button>
+      <button class="button-delete" color="secondary" matTooltip="Remove product">
+        <mat-icon class="btn-primary" (click)="minusProduct(element)"> - </mat-icon>
+      </button>
+      <button class="button-delete" color="secondary" matTooltip="Remove product">
+        <mat-icon class="btn-primary" (click)="removeProduct(element)">delete</mat-icon>
+      </button>
+    </td>
   </ng-container>
 
   <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
@@ -38,3 +60,6 @@
   [pageSizeOptions]="[5, 10, 20, 50]"
   [showFirstLastButtons]="true"
 ></mat-paginator>
+</div>
+</mat-card>
+<button class="submitbutton" style="float: right;" (click)="buyAll()">Buy All</button>

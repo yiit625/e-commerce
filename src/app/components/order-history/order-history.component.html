@@ -1,1 +1,18 @@
-<p>order-history works!</p>
+<p>Your Previous ordered items are!</p>
+
+<div class="cart-top container-fluid"></div>
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let item of previousProducts">
+      <div class="card col-md-3">
+        <img src="{{item.image}}" alt="">
+        <h4 class="item"><strong>{{item.title}}</strong></h4>
+        <h3 class="item">{{item.description}}</h3>
+        <p><strong>Price: </strong>${{item.price}}</p>
+        <p>{{item.category}}</p>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+

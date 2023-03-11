@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CartapiService} from "../../services/cartapi.service";
+import {CartApiService} from "../../services/cart-api.service";
 import {PageEvent} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
 
@@ -16,9 +16,9 @@ export class CartComponent implements OnInit {
   totalPrice: number = 0;
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
 
-  constructor(private cartApi: CartapiService) {}
+  constructor(private cartApi: CartApiService) {}
   ngOnInit() {
-    this.displayedColumns = ['imageUrl','title', 'price', 'totalPrice', 'quantity' ,'delete'];
+    this.displayedColumns = ['position', 'imageUrl','title', 'category', 'price', 'quantity' ,'delete'];
     this.fetchProducts();
   }
 
@@ -35,15 +35,11 @@ export class CartComponent implements OnInit {
   }
 
   addProduct(item: any) {
-    item.quantity += 1 ;
-    item.total = item.quantity * item.price;
-    this.cartApi.addToChart(item);
+    this.cartApi.increaseQuantity(item);
   }
 
   minusProduct(item: any) {
-    item.quantity -= 1 ;
-    item.total = item.quantity * item.price;
-    this.cartApi.addToChart(item);
+    this.cartApi.decreaseQuantity(item);
   }
 
   removeProduct(item: any) {

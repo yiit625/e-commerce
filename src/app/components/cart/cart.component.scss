@@ -5,8 +5,8 @@
   border: 0 solid black;
 
   &:hover {
-  transition: box-shadow 0.1s ease-in;
-  box-shadow: 2px 0 5px 2px transparent;
+    transition: box-shadow 0.1s ease-in;
+    box-shadow: 2px 0 5px 2px transparent;
   }
 }
 
@@ -49,6 +49,20 @@ button:focus svg {
   transition: .3s;
 }
 
+.button-delete {
+  margin-right: 7px;
+}
+
+.button-increase {
+  margin-right: 7px;
+  border: 2px solid #0d6efd;
+}
+
+.button-decrease {
+  margin-right: 7px;
+  border: 2px solid rgb(255, 120, 90);
+}
+
 .submitbutton {
   position: relative;
   width: 100px;
@@ -57,6 +71,8 @@ button:focus svg {
   overflow: hidden;
   border: none;
   transition: .3s;
+  margin-right: 10px;
+  float: right;
 }
 .submitbutton:hover {
   background-color: #0d6efd;

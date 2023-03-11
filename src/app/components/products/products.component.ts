@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ApiService} from "../../services/api.service";
-import {CartapiService} from "../../services/cartapi.service";
+import {CartApiService} from "../../services/cart-api.service";
 
 @Component({
   selector: 'app-products',
@@ -9,7 +9,7 @@ import {CartapiService} from "../../services/cartapi.service";
 })
 export class ProductsComponent implements OnInit {
   productList: any;
-  constructor(private api:ApiService, private cartApi: CartapiService) {
+  constructor(private api:ApiService, private cartApi: CartApiService) {
   }
   ngOnInit() {
     this.api.getProduct().subscribe(res=>{

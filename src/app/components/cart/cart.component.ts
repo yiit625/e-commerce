@@ -11,14 +11,13 @@ import {MatTableDataSource} from "@angular/material/table";
 export class CartComponent implements OnInit {
   allProducts: any = 0;
   displayedColumns: string[] | undefined;
-  pageIndex: number = 0;
-  pageSize: number = 10;
   totalPrice: number = 0;
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
 
-  constructor(private cartApi: CartApiService) {}
-  ngOnInit() {
+  constructor(private cartApi: CartApiService) {
     this.displayedColumns = ['position', 'imageUrl','title', 'category', 'price', 'quantity' ,'delete'];
+  }
+  ngOnInit() {
     this.fetchProducts();
   }
 
@@ -28,9 +27,7 @@ export class CartComponent implements OnInit {
       this.totalPrice = 0;
       data.map((a:any) => {
         this.totalPrice += a.total;
-        console.log(this.totalPrice);
       });
-
     })
   }
 
@@ -49,11 +46,6 @@ export class CartComponent implements OnInit {
 
   removeAllProduct() {
     this.cartApi.removeAllCart()
-  }
-
-  onChangePage(pe: PageEvent) {
-    this.pageSize = pe.pageSize;
-    this.pageIndex = pe.pageIndex;
   }
 
   buyAll(){

@@ -39,15 +39,6 @@ export class CartApiService {
     })
     this.cartDataList.push(product)
     this.productList.next(this.cartDataList)
-    this.getTotalAmount();
-    console.log(this.cartDataList)
-  }
-
-  getTotalAmount() {
-    let grandTotal = 0
-    this.cartDataList.map((a:any) => {
-      grandTotal += a.total
-    })
   }
 
   removeCartData(product:any) {
@@ -72,7 +63,6 @@ export class CartApiService {
       Object.assign(a, {transactionNumber:this.transactionNumber.value})
       this.purchasedList.push(a);
     });
-    console.log(this.purchasedList);
     this.productList.next(this.cartDataList);
   }
 }

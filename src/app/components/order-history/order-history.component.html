@@ -41,9 +41,7 @@
 
       <!-- Group header -->
       <ng-container matColumnDef="groupHeader">
-        <mat-cell colspan="999" *matCellDef="let group">
-          <!--mat-icon *ngIf="group.expanded">expand_less</mat-icon>
-          <mat-icon *ngIf="!group.expanded">expand_more</mat-icon-->
+        <mat-cell *matCellDef="let group">
           <strong>
             Transaction Number is {{group[groupByColumns[group.level-1]]}},
             Total Count of Items is {{group.totalCounts}}
@@ -52,14 +50,9 @@
         </mat-cell>
       </ng-container>
 
-      <mat-row *matRowDef="let row; columns: ['groupHeader']; when: isGroup"
-               (click)="groupHeaderClick(row)"> </mat-row>
+      <mat-row *matRowDef="let row; columns: ['groupHeader']; when: isGroup"> </mat-row>
 
     </table>
-    <mat-paginator
-      [pageSizeOptions]="[5, 10, 20, 50]"
-      [showFirstLastButtons]="true"
-    ></mat-paginator>
   </div>
 </mat-card>
 

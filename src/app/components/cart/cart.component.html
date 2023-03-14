@@ -32,7 +32,7 @@
       <!-- Price Column -->
       <ng-container matColumnDef="price">
         <th *matHeaderCellDef mat-header-cell>Price ( $ {{ this.totalPrice | number : '1.2-2'}})</th>
-        <td *matCellDef="let element" mat-cell>${{ element.price }}</td>
+        <td *matCellDef="let element" mat-cell>${{ element.total }}</td>
       </ng-container>
 
       <!-- Quantity Column -->

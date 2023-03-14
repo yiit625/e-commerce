@@ -44,10 +44,6 @@ export class CartComponent implements OnInit {
     this.fetchProducts()
   }
 
-  removeAllProduct() {
-    this.cartApi.removeAllCart()
-  }
-
   buyAll(){
     this.cartApi.moveToPurchase(this.dataSource);
   }

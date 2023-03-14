@@ -27,7 +27,7 @@
       <!-- Price Column -->
       <ng-container matColumnDef="price">
         <th *matHeaderCellDef mat-header-cell>Price</th>
-        <td *matCellDef="let element" mat-cell>{{ element.price }}</td>
+        <td *matCellDef="let element" mat-cell>${{ element.price }}</td>
       </ng-container>
 
       <!-- Quantity Column -->
@@ -45,7 +45,7 @@
           <strong>
             Transaction Number is {{group[groupByColumns[group.level-1]]}},
             Total Count of Items is {{group.totalCounts}}
-            and Total Price of Items is {{group.totalPrice | number : '1.2-2'}}
+            and Total Price of Items is ${{group.totalPrice | number : '1.2-2'}}
           </strong>
         </mat-cell>
       </ng-container>

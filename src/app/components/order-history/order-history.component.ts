@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { CartApiService } from 'src/app/services/cart-api.service';
 import {MatTableDataSource} from "@angular/material/table";
 import {Group} from "../../model/Group";
+import {OrderHistoryService} from "../../services/order-history.service";
 
 @Component({
   selector: 'app-order-history',
@@ -13,18 +14,26 @@ export class OrderHistoryComponent implements OnInit {
 
   displayedColumns: string[] | undefined;
   groupByColumns: string[] = [];
+  purchasedList:any = []
 
-  constructor(private cartApi: CartApiService) {
+  constructor(private orderHistoryService: OrderHistoryService) {
     this.displayedColumns = ['imageUrl','title', 'category', 'price', 'quantity'];
     this.groupByColumns = ['transactionNumber'];
   }
 
   ngOnInit() {
     this.fetchProducts();
+    this.setProducts();
   }
 
   fetchProducts() {
-    this.dataSource.data = this.addGroups(this.cartApi.purchasedList, this.groupByColumns);
+    this.orderHistoryService.getPurchasedData().subscribe(data => {
+      this.purchasedList = data;
+    })
+  }
+
+  setProducts() {
+    this.dataSource.data = this.addGroups(this.purchasedList, this.groupByColumns);
   }
 
   addGroups(data: any[], groupByColumns: string[]): any[] {
@@ -62,6 +71,7 @@ export class OrderHistoryComponent implements OnInit {
     return subGroups;
   }
 
+  // Finding the unique properties
   uniqueBy(a:any, key:any) {
     const seen:any = {};
     return a.filter((item:any) => {

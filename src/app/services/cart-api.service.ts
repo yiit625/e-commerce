@@ -20,7 +20,7 @@ export class CartApiService {
   increaseQuantity(product: any) {
     product.quantity += 1
     product.total = product.quantity * product.price
-    product.price = product.quantity * product.price
+    // product.price = product.quantity * product.price
     this.addToChart(product);
   }
 

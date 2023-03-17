@@ -8,7 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProductsComponent } from './components/products/products.component';
 import { CartComponent } from './components/cart/cart.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { OrderHistoryComponent } from './components/order-history/order-history.component';
+import { OrderHistoryModule } from './order-history/order-history.module';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
@@ -28,8 +28,7 @@ import {MatMenuModule} from "@angular/material/menu";
     HeaderComponent,
     ProductsComponent,
     CartComponent,
-    FooterComponent,
-    OrderHistoryComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +45,8 @@ import {MatMenuModule} from "@angular/material/menu";
     MatPaginatorModule,
     MatTooltipModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    OrderHistoryModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

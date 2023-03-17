@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {ApiService} from "../../services/api.service";
-import {CartApiService} from "../../services/cart-api.service";
+import {Component, OnInit} from '@angular/core';
+import {ApiService} from "../services/api.service";
+import {CartApiService} from "../../cart-module/services/cart-api.service";
 
 @Component({
   selector: 'app-products',

@@ -1,13 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './components/header/header.component';
-import { ProductsComponent } from './components/products/products.component';
-import { CartComponent } from './components/cart/cart.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { OrderHistoryModule } from './order-history/order-history.module';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
@@ -21,14 +16,13 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatCardModule} from "@angular/material/card";
 import {MatMenuModule} from "@angular/material/menu";
+import {CartModuleModule} from "./cart-module/cart-module.module";
+import {ProductModuleModule} from "./product-module/product-module.module";
+import {BaseModuleModule} from "./base-module/base-module.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    ProductsComponent,
-    CartComponent,
-    FooterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +40,10 @@ import {MatMenuModule} from "@angular/material/menu";
     MatTooltipModule,
     MatCardModule,
     MatMenuModule,
-    OrderHistoryModule 
+    OrderHistoryModule,
+    CartModuleModule,
+    ProductModuleModule,
+    BaseModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

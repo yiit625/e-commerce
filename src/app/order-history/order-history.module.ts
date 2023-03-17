@@ -13,7 +13,6 @@ import {MatCardModule} from "@angular/material/card";
 import {MatMenuModule} from "@angular/material/menu";
 import { CommonModule } from '@angular/common';
 import { OrderHistoryRoutingModule } from './order-history-routing.module';
-import { RouterModule, Routes } from '@angular/router';
 
 
 @NgModule({

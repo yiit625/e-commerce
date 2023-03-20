@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CartApiService} from "../../services/cart-api.service";
-import {PageEvent} from "@angular/material/paginator";
+import {CartApiService} from "../services/cart-api.service";
 import {MatTableDataSource} from "@angular/material/table";
 
 @Component({

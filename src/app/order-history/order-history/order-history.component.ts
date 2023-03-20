@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { CartApiService } from 'src/app/services/cart-api.service';
 import {MatTableDataSource} from "@angular/material/table";
-import {Group} from "../../model/Group";
-import {OrderHistoryService} from "../../services/order-history.service";
+import {Group} from "../models/Group";
+import {OrderHistoryService} from "../services/order-history.service";
 
 @Component({
   selector: 'app-order-history',
@@ -62,7 +61,7 @@ export class OrderHistoryComponent implements OnInit {
       const rowsInGroup = data.filter(row => group[currentColumn] === row[currentColumn]);
       rowsInGroup.forEach(a => {
         group.totalCounts += a.quantity
-        group.totalPrice += a.price
+        group.totalPrice = a.price * a.quantity + group.totalPrice
       })
       const subGroup = this.subLevel(rowsInGroup, level + 1, groupByColumns);
       subGroup.unshift(group);

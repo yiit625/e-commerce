@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {ApiService} from "../../services/api.service";
-import {CartApiService} from "../../services/cart-api.service";
+import {Component, OnInit} from '@angular/core';
+import {ApiService} from "../services/api.service";
+import {CartApiService} from "../../cart-module/services/cart-api.service";
 
 @Component({
   selector: 'app-products',
@@ -12,7 +12,8 @@ export class ProductsComponent implements OnInit {
   constructor(private api:ApiService, private cartApi: CartApiService) {
   }
   ngOnInit() {
-    this.api.getProduct().subscribe(res=>{
+    // this.api.getProduct().subscribe(res=>{
+    this.api.findProducts().subscribe(res=>{
       this.productList = res;
       this.productList.forEach((a:any) => {
         Object.assign(a, {quantity:1, total:a.price})

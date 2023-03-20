@@ -12,7 +12,9 @@ export class CartApiService {
   productList = new BehaviorSubject<any>([])
 
   getProductData() {
+    // remove array
     this.cartDataList = JSON.parse(localStorage.getItem("productList") || "[]")
+    // store data in intercepters!!
     this.productList.next(this.cartDataList)
     return this.productList.asObservable();
   }
@@ -21,6 +23,7 @@ export class CartApiService {
     product.quantity += 1
     product.total = product.quantity * product.price
    // product.price = product.quantity * product.price
+    // common and shared module difference research !! DTRY !
     this.addToChart(product);
   }
 

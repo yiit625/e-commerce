@@ -1,0 +1,12 @@
+[
+  {"id": 1, "title":"Calvin Klein Sleeves", "price":800, "image":"https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"},
+  {"id": 2, "title":"Docker Jean Bag", "price":1800, "image":"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"},
+  {"id": 3, "title":"HP Leather Jacket", "price":1000, "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg"},
+  {"id": 4, "title":"K8 Mens Shirt", "price":1200, "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg"},
+  {"id": 5, "title":"VM Wear", "price":2300, "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg"},
+  {"id": 6, "title":"RedHat Top", "price":4000, "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg"},
+  {"id": 7, "title":"Kali Bracelet", "price":8110, "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg"},
+  {"id": 8, "title":"Dell Yoga Shirt", "price":2900, "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg"},
+  {"id": 9, "title":"Hard Wear Sleeves", "price":2900, "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"}
+]
+
